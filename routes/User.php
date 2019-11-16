@@ -10,7 +10,7 @@ class User {
     }
 
     static function login(&$request, &$response) {
-        $model = new Model(get_db_connection(), 'users');
+        $model = new Model('users');
     
         $user = $model
             ->conditions(array(
@@ -31,7 +31,7 @@ class User {
     }
 
     static function admin_register(&$request, &$response) {
-        $model = new Model(get_db_connection(), 'users');
+        $model = new Model('users');
     
         $user = $model
             ->model(array(

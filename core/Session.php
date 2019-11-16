@@ -10,16 +10,16 @@ class Session {
         $ip = $_SERVER['REMOTE_ADDR'];
 
         if (isset($_SESSION['exp']) && $_SESSION['exp'] < $now ) {
-            Session::destroy();
+            self::destroy();
         }
 
         if (isset($_SESSION['client']) && $_SESSION['client'] !== $ip) {
-            Session::destroy();
+            self::destroy();
         } else {
             $_SESSION['client'] = $ip;
         }
 
-        $_SESSION['exp'] = $now + Session::EXPIRATION_TIME;
+        $_SESSION['exp'] = $now + self::EXPIRATION_TIME;
 
     }
 

@@ -2,8 +2,8 @@
 
 class Fuel {
     static function listing(&$request, &$response) {
-
-        $model = new Model(get_db_connection(), 'fuel');
+        
+        $model = new Model('fuel');
         
         $response->json($model
             ->order(array(
@@ -18,7 +18,7 @@ class Fuel {
 
     static function delete(&$request, &$response) {
 
-        $model = new Model(get_db_connection(), 'fuel');
+        $model = new Model('fuel');
     
         $removed = $model
             ->conditions(array(
@@ -37,7 +37,7 @@ class Fuel {
 
     static function update(&$request, &$response) {
 
-        $model = new Model(get_db_connection(), 'fuel');
+        $model = new Model('fuel');
     
         $updated = $model
             ->model(array(
@@ -50,9 +50,7 @@ class Fuel {
                 "id" => $_GET["id"]
             ))
             ->update();
-    
-        $db = get_db_connection();
-        
+            
         if (count($updated) > 0) {
             $response->json($updated[0]);
         } else {
@@ -63,7 +61,7 @@ class Fuel {
 
     static function insert(&$request, &$response) {
 
-        $model = new Model(get_db_connection(), 'fuel');
+        $model = new Model('fuel');
     
         $inserted = $model
             ->model(array(

@@ -6,16 +6,12 @@ ob_start();
 require_once 'core/Session.php';
 require_once 'core/Model.php';
 require_once 'core/Router.php';
+require_once 'core/DB.php';
 require_once 'routes/middlewares.php';
 require_once 'routes/User.php';
 require_once 'routes/Fuel.php';
 
 Session::start();
-
-function get_db_connection() {
-    require_once 'db.env.php';
-    return pg_connect("host=$db_host port=$db_port dbname=$db_name user=$db_user password=$db_password");
-}
 
 // Router::push('GET', 'q=admin-register', ['User::admin_register']);
 

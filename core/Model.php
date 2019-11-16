@@ -9,9 +9,10 @@ class Model {
     private $conditions = null;
     private $limit = null;
     private $offset = null;
+    private $order = null;
 
-    function __construct($db, $table) {
-        $this->db = $db;
+    function __construct($table) {
+        $this->db = Database::get_connection();
         $this->table = $table;
     }
 

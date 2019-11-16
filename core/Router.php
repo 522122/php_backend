@@ -101,11 +101,11 @@ class Router {
     static $routes = array();
 
     static function push($method, $path, $actions) {
-        array_push(Router::$routes, new Route($method, $path, $actions));
+        array_push(self::$routes, new Route($method, $path, $actions));
     }
 
     static function exec() {
-        foreach(Router::$routes as $route) {
+        foreach(self::$routes as $route) {
             if ( $route->is_valid() ) {
                 $route->exec();
                 return;
