@@ -10,6 +10,7 @@ require_once 'core/DB.php';
 require_once 'routes/middlewares.php';
 require_once 'routes/User.php';
 require_once 'routes/Fuel.php';
+require_once 'routes/Maintenance.php';
 
 Session::start();
 
@@ -22,6 +23,11 @@ Router::push('GET', 'q=fuel', ['login_required', 'Fuel::listing']);
 Router::push('DELETE', 'q=fuel&id=?', ['login_required', 'Fuel::delete']);
 Router::push('POST', 'q=fuel&id=?', ['login_required', 'Fuel::update']);
 Router::push('POST', 'q=fuel', ['login_required', 'Fuel::insert']);
+
+Router::push('POST', 'q=maintenance', ['login_required', 'Maintenance::insert']);
+Router::push('GET', 'q=maintenance', ['login_required', 'Maintenance::listing']);
+Router::push('DELETE', 'q=maintenance&id=?', ['login_required', 'Maintenance::delete']);
+
 
 Router::push('GET', 'q=test', [function(&$request, &$response) {
     $response->middle = '<h1>Welcome dude!</h1>';
